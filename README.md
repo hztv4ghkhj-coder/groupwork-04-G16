@@ -1,32 +1,54 @@
 # groupwork-04-G16
 #GroupWork
-#目的
+# 目的
 プログラムを起動したら10秒間音声を録音し，録音された内容を文字起こしして，テキストファイルに保存するアプリケーションをグループで作成します
 
-#必要なモジュール
-mlx>=0.11
-numba
-numpy
-torch
-tqdm
-more-itertools
-tiktoken
-huggingface_hub
-scipy
-audioop-lts
+# 必要なモジュール
+ mlx>=0.11
+ 
+ numba
+ 
+ numpy
+ 
+ torch
+ 
+ tqdm
+ 
+ more-itertools
+ 
+ tiktoken
+ 
+ huggingface_hub
+ 
+ scipy
+ 
+ audioop-lts
 
-#作業者
+# 作業者
 リーダー:宮本和季
+
 音声録音:宮本和季
+
 文字起こし:越川凛太朗
+
 ファイル保存:松本丈二
 
-#フォルダ構造とファイル名
+# フォルダ構造とファイル名
+
+
+
 groupwork-04-G16/
+
 ├── README.md
+
 ├── main.py            # 全体の統合処理
+
 ├── record.py          # 宮本和季: 音声録音
+
 ├── transcribe.py      # 越川凛太朗: 文字起こし
+
 └── storage.py         # 松本丈二: ファイル保存
+
+
 
 
