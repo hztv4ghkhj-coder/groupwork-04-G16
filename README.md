@@ -4,7 +4,16 @@
 プログラムを起動したら10秒間音声を録音し，録音された内容を文字起こしして，テキストファイルに保存するアプリケーションをグループで作成します
 
 #必要なモジュール
-
+mlx>=0.11
+numba
+numpy
+torch
+tqdm
+more-itertools
+tiktoken
+huggingface_hub
+scipy
+audioop-lts
 
 #作業者
 リーダー:宮本和季
