@@ -1,0 +1,49 @@
+
+import wave
+import numpy as np
+import sounddevice as sd
+
+
+def record_audio(duration: int = 10, output_path: str = "output.wav", sample_rate: int = 44100) -> str:
+    """マイクから音声を指定秒数録音し、WAV形式で保存します。
+
+    Args:
+        duration (int): 録音時間（秒）。デフォルトは10秒。
+        output_path (str): 保存先のファイルパス。デフォルトは "output.wav"。
+        sample_rate (int): サンプリングレート（Hz）。デフォルトは 44100Hz。
+
+    Returns:
+        str: 保存された音声ファイルのパス。
+
+    Raises:
+        Exception: 録音またはファイル保存時にエラーが発生した場合。
+    """
+    print(f"[INFO] 録音を開始します ({duration}秒間)...")
+
+    # numpy配列としてマイク入力から音声データを取得 (モノラル録音: channels=1)
+    audio_data = sd.rec(
+        int(duration * sample_rate),
+        samplerate=sample_rate,
+        channels=1,
+        dtype='int16'
+    )
+    
+    # 録音終了まで待機
+    sd.wait()
+    print("[INFO] 録音が完了しました。ファイルを保存しています...")
+
+    # WAVファイルとして書き出し
+    with wave.open(output_path, 'wb') as wf:
+        wf.setnchannels(1)                      # モノラル
+        wf.setsampwidth(2)                      # 16bit (2 bytes)
+        wf.setframerate(sample_rate)            # サンプリングレート
+        wf.writeframes(audio_data.tobytes())    # numpy配列のバイナリ化
+
+    print(f"[INFO] 保存完了: {output_path}")
+    return output_path
+
+
+if __name__ == "__main__":
+    # 単体テスト用実行処理
+    saved_file = record_audio(duration=10, output_path="output.wav")
+    print(f"録音テスト成功: {saved_file}")

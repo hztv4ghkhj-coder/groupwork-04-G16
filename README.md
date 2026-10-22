@@ -14,6 +14,7 @@ tiktoken
 huggingface_hub
 scipy
 audioop-lts
+sounddevice
 
 #作業者
 リーダー:宮本和季
